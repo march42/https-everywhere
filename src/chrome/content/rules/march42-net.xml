@@ -2,24 +2,42 @@
 	march42.net ruleset by Marc Hefter
 
 	no securecookie as there are no cookies used
+	split ruleset to domains march42.net and kleines-miststueck.de
+	removed host="*.march42.net"
 -->
 
 <ruleset name="march42.net">
 	<target host="march42.net" />
 	<target host="www.march42.net" />
-	<target host="autodiscover.march42.net" />
+	<target host="secure.march42.net" />
+	<!--target host="*.march42.net" /-->
 	<target host="autoconfig.march42.net" />
-	<target host="mail.march42.net" />
-	<target host="*.march42.net" />
+	<target host="autodiscover.march42.net" />
+	<!--target host="avt.march42.net" /-->
+	<!--target host="mail.march42.net" /-->
 
+	<exclusion pattern="/favicon\.ico$" />
+	<rule from="^http://(?:www\.|secure\.)?march42\.net/"
+		to="https://secure.march42.net/" />
+	<!--rule from="^http://([\w\-]+)\.march42\.net/favicon\.ico"
+		to="https://secure.march42.net/favicon.ico" /-->
+	<rule from="^http://([\w\-]+)\.march42\.net/"
+		to="https://secure.march42.net/$1/" />
+		<test url="http://autoconfig.march42.net/" />
+		<test url="http://march42.net/Autodiscover/Autodiscover.xml" />
+		<test url="http://autodiscover.march42.net/autodiscover/autodiscover.xml" />
+		<!--test url="http://mail.march42.net/" /-->
+
+	<rule from="^http:" to="https:" />
+</ruleset>
+
+<ruleset name="kleines-miststueck.de">
 	<target host="kleines-miststueck.de" />
 	<target host="www.kleines-miststueck.de" />
 	<target host="carolina.kleines-miststueck.de" />
 
-	<rule from="^http://(|www\.|secure\.)march42\.net/"	to="https://secure.march42.net/" />
-	<rule from="^http://(|www\.|carolina\.)kleines-miststueck.de/"	to="https://carolina.kleines-miststueck.de/" />
-
-	<rule from="^http://([\w\-]+)\.march42\.net/"	to="https://secure.march42.net/$1/" />
+	<rule from="^http://(?:www\.)?kleines-miststueck.de/"
+		to="https://carolina.kleines-miststueck.de/" />
 
 	<rule from="^http:" to="https:" />
 </ruleset>
