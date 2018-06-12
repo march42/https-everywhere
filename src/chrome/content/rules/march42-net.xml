@@ -1,0 +1,25 @@
+<!--
+	march42.net ruleset by Marc Hefter
+
+	no securecookie as there are no cookies used
+-->
+
+<ruleset name="march42.net">
+	<target host="march42.net" />
+	<target host="www.march42.net" />
+	<target host="autodiscover.march42.net" />
+	<target host="autoconfig.march42.net" />
+	<target host="mail.march42.net" />
+	<target host="*.march42.net" />
+
+	<target host="kleines-miststueck.de" />
+	<target host="www.kleines-miststueck.de" />
+	<target host="carolina.kleines-miststueck.de" />
+
+	<rule from="^http://(|www\.|secure\.)march42\.net/"	to="https://secure.march42.net/" />
+	<rule from="^http://(|www\.|carolina\.)kleines-miststueck.de/"	to="https://carolina.kleines-miststueck.de/" />
+
+	<rule from="^http://([\w\-]+)\.march42\.net/"	to="https://secure.march42.net/$1/" />
+
+	<rule from="^http:" to="https:" />
+</ruleset>
